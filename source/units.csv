@@ -37,3 +37,4 @@ id,title,description,min_level,section,image,section_image
 36,Choosing a Backend,"Prometheus, Jaeger, and vendor platforms — same OTLP data, different destinations.",1,Putting It Together,unit36.png,
 37,Common Pitfalls,Over-instrumentation and cardinality explosions — the two classic mistakes.,1,Putting It Together,unit37.png,
 38,OpenTelemetry on Kubernetes,The Operator that auto-instruments workloads running in a cluster.,1,Putting It Together,unit38.png,
+39,Recap: Key Terms,Quick matching practice that revisits the key terms from earlier decks.,1,Review,unit39.png,

@@ -57,6 +57,7 @@
     "Continuous Profiling as a Fourth Signal",
     "Choosing a Backend",
     "Common Pitfalls",
-    "OpenTelemetry on Kubernetes"
+    "OpenTelemetry on Kubernetes",
+    "Recap: Key Terms"
   ]
 }
