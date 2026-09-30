@@ -63,3 +63,21 @@ PII,"Personally identifiable information: data that can identify a person, such 
 db.system,"An OpenTelemetry attribute naming the database product, such as postgresql or mysql.",https://opentelemetry.io/docs/specs/semconv/database/database-spans/,
 db.operation,"An OpenTelemetry attribute naming the database operation, such as SELECT or INSERT.",https://opentelemetry.io/docs/specs/semconv/database/database-spans/,
 http.status_code,"An OpenTelemetry attribute holding the HTTP response status code, such as 200 or 404.",https://opentelemetry.io/docs/specs/semconv/http/http-spans/,
+ELK,"The Elasticsearch, Logstash and Kibana stack, a popular set of tools for collecting and searching logs.",https://en.wikipedia.org/wiki/Elasticsearch,18
+CPUs,Central processing units: the processors that run a computer's programs.,https://en.wikipedia.org/wiki/Central_processing_unit,
+UUIDs,Universally unique identifiers: 128-bit random-looking IDs that are practically never repeated.,https://en.wikipedia.org/wiki/Universally_unique_identifier,137
+Dockerfile,A text file listing the instructions Docker follows to build an image.,https://docs.docker.com/reference/dockerfile/,265
+SSH,Secure Shell: an encrypted protocol for logging in to and running commands on another machine.,https://en.wikipedia.org/wiki/Secure_Shell,265
+Traces,"Records of the path one request takes through a system, made of connected spans.",https://opentelemetry.io/docs/concepts/signals/traces/,9
+Spans,"Single timed operations within a trace, such as one function call or database query.",https://opentelemetry.io/docs/concepts/signals/traces/,36
+Metrics,"Numbers measured over time, such as request counts or memory use.",https://opentelemetry.io/docs/concepts/signals/metrics/,8
+Logs,Timestamped text records of events that happened in a program.,https://opentelemetry.io/docs/concepts/signals/logs/,8
+Counters,"Metrics that only ever go up, such as the total number of requests served.",https://opentelemetry.io/docs/specs/otel/metrics/api/,113
+Gauges,"Metrics that report a current value that can rise or fall, such as memory in use.",https://opentelemetry.io/docs/specs/otel/metrics/api/,113
+Histograms,"Metrics that count how many measurements fall into value ranges, such as request durations.",https://opentelemetry.io/docs/specs/otel/metrics/api/,113
+Resource attributes,"Details describing the thing that produces telemetry, such as service name and host.",https://opentelemetry.io/docs/concepts/resources/,141
+Exporters,Components that send collected telemetry to a backend.,https://opentelemetry.io/docs/collector/configuration/,162
+Collectors,"The OpenTelemetry Collector programs that receive, process and forward telemetry.",https://opentelemetry.io/docs/collector/,22
+Processors,"Collector components that change or filter telemetry, such as batching or limiting memory.",https://opentelemetry.io/docs/collector/configuration/,176
+Gateway patterns,A collector setup where a central service receives telemetry from many agents.,https://opentelemetry.io/docs/collector/deployment/gateway/,204
+Resource detectors,Components that automatically fill in resource attributes such as cloud region or host name.,https://opentelemetry.io/docs/languages/js/resources/,211
