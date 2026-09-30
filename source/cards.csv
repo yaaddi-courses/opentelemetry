@@ -45,13 +45,13 @@ id,unit_id,type,role,related_main_id,prompt,options,correct_index,image,audio,ex
 44,7,true_false,preview,43,Auto-instrumentation needs no source code edits.,,true,,,"That's the core benefit; auto-instrumentation should work out of the box by observing your code, meaning no manual edits are necessary for basic coverage."
 45,7,true_false,exercise,43,A Java agent can auto-instrument untouched code.,,true,,,It attaches via bytecode manipulation at startup.
 46,7,multiple_choice,exercise,43,Auto-instrumentation is fastest for:,Quick start|Deep logic|Removing spans,0,,,"It provides immediate visibility into the overall system flow, making it perfect for getting a quick baseline view of performance without deep manual effort."
-47,7,select_blank,exercise,43,Auto-instrumentation is a ___ way to start.,low-effort|manual|code-heavy,0,,,
-48,7,multiple_choice,exercise,43,Auto-instrumentation commonly misses:,Business spans|HTTP calls|DB calls,0,,,
+47,7,select_blank,exercise,43,Auto-instrumentation is a ___ way to start.,low-effort|manual|code-heavy,0,,,Auto-instrumentation is a low-effort way to start: it adds tracing to common libraries without you editing code.
+48,7,multiple_choice,exercise,43,Auto-instrumentation commonly misses:,Business spans|HTTP calls|DB calls,0,,,"Auto-instrumentation knows common libraries, not your business logic, so it commonly misses spans for your own business steps."
 49,7,true_false,exercise,43,Auto and manual instrumentation can combine.,,true,,,"Auto-instrument the framework, add manual spans for logic."
-50,8,multiple_choice,main,,A trace represents:,A request|CPU load|One log,0,,,
-51,8,true_false,preview,50,A trace records one request end-to-end.,,true,,,
+50,8,multiple_choice,main,,A trace represents:,A request|CPU load|One log,0,,,A trace represents one request as it travels through your system.
+51,8,true_false,preview,50,A trace records one request end-to-end.,,true,,,"True. A trace follows a single request end to end, across every service it touches."
 52,8,true_false,exercise,50,A trace can span multiple services.,,true,,,That's what makes distributed tracing useful.
-53,8,multiple_choice,exercise,50,A trace is made of:,Spans|Metrics|Log lines,0,,,
+53,8,multiple_choice,exercise,50,A trace is made of:,Spans|Metrics|Log lines,0,,,"A trace is made of spans, each one a timed step of the work done for the request."
 54,8,select_blank,exercise,50,A trace tracks one ___ end-to-end.,request|server|deploy,0,,,"A trace follows a single user action or API call—the request—from its entry point all the way through every service it touches. Servers and deployments are just the components that handle many requests, not the thing being tracked end-to-end."
 55,8,multiple_choice,exercise,50,Traces mainly help debug:,"Latency, errors|CPU temp|Disk space",0,,,"Since traces map out the flow and timing of a request across multiple services, they are perfect for pinpointing where delays (latency) or failures (errors) occurred. CPU temperature and disk space are infrastructure metrics, not application flow issues."
 56,8,true_false,exercise,50,A single-service app gains nothing from tracing.,,false,,,Even one service benefits from seeing internal spans.
@@ -133,13 +133,13 @@ id,unit_id,type,role,related_main_id,prompt,options,correct_index,image,audio,ex
 132,19,multiple_choice,exercise,127,A log's 'body' field holds:,The message|Trace ID|Span kind,0,,,The 'body' field is reserved for the actual descriptive message or payload detailing what happened; Trace ID and Span kind are metadata that categorize the event.
 133,19,true_false,exercise,127,OTel logs can never reference a trace.,,false,,,Attaching trace/span IDs enables correlation.
 134,20,multiple_choice,main,,What links a log to its trace?,Shared ID|Same filename|Log level,0,,,"A shared identifier, specifically a Trace ID, is the mechanism used to group all related logs together so you can reconstruct the entire sequence of events."
-135,20,true_false,preview,134,Shared trace IDs let you correlate logs.,,true,,,
+135,20,true_false,preview,134,Shared trace IDs let you correlate logs.,,true,,,"True. When logs carry the same trace ID, you can find every log line that belongs to one request."
 136,20,true_false,exercise,134,Correlation lets you jump trace to logs.,,true,,,That's the point of shared identifiers.
-137,20,multiple_choice,exercise,134,Correlated signals share:,Trace/span IDs|Random UUIDs|File paths,0,,,
-138,20,select_blank,exercise,134,Correlation turns signals into one ___ story.,debugging|billing|random,0,,,
-139,20,multiple_choice,exercise,134,"Without correlation, debugging means:",Manual searching|Instant answers|No effort,0,,,
+137,20,multiple_choice,exercise,134,Correlated signals share:,Trace/span IDs|Random UUIDs|File paths,0,,,"Correlated signals share trace and span IDs, which is what lets you jump between a trace, its logs and its metrics."
+138,20,select_blank,exercise,134,Correlation turns signals into one ___ story.,debugging|billing|random,0,,,"Correlation ties traces, logs and metrics into one debugging story instead of three separate piles of data."
+139,20,multiple_choice,exercise,134,"Without correlation, debugging means:",Manual searching|Instant answers|No effort,0,,,Without correlation you must search each signal by hand and guess which entries belong together.
 140,20,true_false,exercise,134,Resource attributes also help correlation.,,true,,,They narrow logs/metrics to the same service.
-141,21,multiple_choice,main,,service.name is a:,Resource attribute|Span attribute|Metric name,0,,,
+141,21,multiple_choice,main,,service.name is a:,Resource attribute|Span attribute|Metric name,0,,,"`service.name` is a resource attribute: it describes the service that produced the data, not one single event."
 142,21,true_false,preview,141,Service.name is a resource attribute.,,true,,,"The service name describes the entire application or component generating the data, which is exactly what a resource attribute tracks. Span and log attributes relate to specific operations within that service."
 143,21,true_false,exercise,141,Resource attributes are set once per process.,,true,,,"They describe the emitter, not one span."
 144,21,multiple_choice,exercise,141,Resource attributes attach to:,Everything emitted|Only traces|One span,0,,,"Because they describe the source environment (like the service name), these attributes apply universally to every piece of data—traces, logs, and metrics alike. They provide the necessary context for everything being observed."
@@ -172,7 +172,7 @@ id,unit_id,type,role,related_main_id,prompt,options,correct_index,image,audio,ex
 171,25,true_false,exercise,169,The Collector is required to use OTel.,,false,,,It's optional but recommended at scale.
 172,25,multiple_choice,exercise,169,A Collector benefit is:,Decoupling backends|Faster CPUs|Free storage,0,,,"The main benefit is decoupling backends. This means your app doesn't need to know how the backend works; it just sends data to the Collector, keeping systems independent and flexible."
 173,25,select_blank,exercise,169,The Collector is optional but ___.,recommended|forbidden|useless,0,,,"It is highly recommended because while you *can* skip it, using the Collector adds crucial structure, resilience, and monitoring capabilities to your entire data pipeline."
-174,25,multiple_choice,exercise,169,Sending data straight to a backend is:,Direct export|Impossible|Illegal,0,,,
+174,25,multiple_choice,exercise,169,Sending data straight to a backend is:,Direct export|Impossible|Illegal,0,,,"Sending data straight from the app to a backend, with no Collector in between, is called direct export."
 175,25,true_false,exercise,169,The Collector can run as its own service.,,true,,,It's typically its own process or container.
 176,26,order,main,,Order the Collector pipeline stages.,Receiver|Processor|Exporter,,,,"The flow always starts with the Receiver accepting the raw data, which then moves through the Processor for transformation, and finally exits via the Exporter."
 177,26,true_false,preview,176,A Collector pipeline starts with a Receiver.,,true,,,"The pipeline must begin at the Receiver because its sole job is to act as the entry point, accepting and ingesting data from whatever source it's connected to."
@@ -245,13 +245,13 @@ id,unit_id,type,role,related_main_id,prompt,options,correct_index,image,audio,ex
 244,35,multiple_choice,exercise,239,A profile sample typically captures a:,Call stack|Full body|DB schema,0,,,"Profiling works by taking periodic snapshots, or samples, of the program's state, which primarily includes the current call stack to show where execution was paused."
 245,35,true_false,exercise,239,Profiling replaces tracing entirely.,,false,,,It's a complementary fourth signal.
 246,36,multiple_choice,main,,Switching from Jaeger to a new backend changes:,Exporter config|App code|Trace format,0,,,You usually only need to update the exporter configuration because you are just changing where the collected trace data gets sent; the core application code and format remain untouched.
-247,36,true_false,preview,246,OTel lets you switch backends via config.,,true,,,
+247,36,true_false,preview,246,OTel lets you switch backends via config.,,true,,,"True. Because OpenTelemetry is vendor-neutral, you change the exporter or Collector config to switch backends."
 248,36,true_false,exercise,246,Prometheus is a common metrics backend.,,true,,,It's a popular choice for metrics storage.
-249,36,multiple_choice,exercise,246,Jaeger is typically used as a:,Tracing backend|Metrics-only tool|Log parser,0,,,
-250,36,select_blank,exercise,246,Neutrality means the backend isn't ___ in.,locked|opened|chosen,0,,,
-251,36,multiple_choice,exercise,246,A team evaluating backends can usually:,Try several|Pick once|Rewrite always,0,,,
+249,36,multiple_choice,exercise,246,Jaeger is typically used as a:,Tracing backend|Metrics-only tool|Log parser,0,,,Jaeger is typically used as a tracing backend: it stores traces and lets you search and view them.
+250,36,select_blank,exercise,246,Neutrality means the backend isn't ___ in.,locked|opened|chosen,0,,,Neutrality means you are not locked in to one vendor: you can move your telemetry to another backend.
+251,36,multiple_choice,exercise,246,A team evaluating backends can usually:,Try several|Pick once|Rewrite always,0,,,"Because OpenTelemetry data is vendor-neutral, a team can send it to several backends and compare them."
 252,36,true_false,exercise,246,Every backend needs totally different instrumentation.,,false,,,Instrumentation stays the same; only exporters differ.
-253,37,multiple_choice,main,,A raw user ID on every metric risks:,Cardinality blowup|Faster queries|No effect,0,,,
+253,37,multiple_choice,main,,A raw user ID on every metric risks:,Cardinality blowup|Faster queries|No effect,0,,,"A raw user ID on every metric creates a new series per user, a cardinality blowup that is costly and slow."
 254,37,true_false,preview,253,High-cardinality labels blow up storage cost.,,true,,,"Yes, because every unique label combination (high cardinality) forces the system to store more metadata and indexes, which rapidly increases storage costs."
 255,37,true_false,exercise,253,Too many low-value spans bury signal.,,true,,,Over-instrumentation creates noise hiding what matters.
 256,37,multiple_choice,exercise,253,High cardinality mainly hurts:,Storage/query cost|Trace ID format|Nothing,0,,,"It primarily impacts storage and query performance because the system has to index every unique combination of labels, making both storage and lookups much larger."
@@ -262,8 +262,8 @@ id,unit_id,type,role,related_main_id,prompt,options,correct_index,image,audio,ex
 261,38,true_false,preview,260,The Operator manages Collectors as K8s resources.,,true,,,That's right; the whole point of an Operator is to extend Kubernetes functionality by managing complex applications using standard resource definitions.
 262,38,true_false,exercise,260,The Operator can inject auto-instrumentation.,,true,,,It patches pod specs at deploy time.
 263,38,true_false,exercise,260,The Operator manages Collectors via K8s custom resources.,,true,,,It exposes Collector config as a Kubernetes CRD you apply like any other manifest.
-264,38,select_blank,exercise,260,"The Operator manages Collectors ___, not by hand.",declaratively|manually|never,0,,,
-265,38,multiple_choice,exercise,260,Auto-instrumentation injection happens via a:,Sidecar|`Dockerfile` edit|SSH session,0,,,
+264,38,select_blank,exercise,260,"The Operator manages Collectors ___, not by hand.",declaratively|manually|never,0,,,The Operator manages Collectors declaratively: you describe the desired setup in a resource and it makes it so.
+265,38,multiple_choice,exercise,260,Auto-instrumentation injection happens via a:,Sidecar|`Dockerfile` edit|SSH session,0,,,The Operator can inject instrumentation into pods automatically; here that injection is done by a sidecar container.
 266,38,true_false,exercise,260,The Operator is the only way to run OTel.,,false,,,You can also deploy the Collector manually.
 267,39,true_false,preview,268,This recap revisits OpenTracing.,,true,,,"Right: OpenTracing means older tracing standard, and the cards that follow revisit it with other terms."
 268,39,match_pairs,main,,Match each term to its meaning.,OpenTracing↔Older tracing standard|OpenCensus↔Older Google project|CNCF↔Cloud Native Foundation|No-op↔Does nothing safely,,,,Each term is paired with its plain-language meaning.
