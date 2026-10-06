@@ -273,3 +273,50 @@ id,unit_id,type,role,related_main_id,prompt,options,correct_index,image,audio,ex
 272,39,match_pairs,exercise,268,Match the terms and meanings.,Tail-based sampling↔Decide at end|Agent pattern↔Collector per host|Gateway pattern↔Central Collector fleet|Resource detector↔Auto-fills resource attributes,,,,Each term is paired with its plain-language meaning.
 273,39,match_pairs,exercise,268,Link every term to its idea.,Resource detector↔Auto-fills resource attributes|Context propagation↔Passing trace context|Continuous profiling↔Sampling running code|Cardinality↔Distinct label combinations,,,,Each term is paired with its plain-language meaning.
 274,39,true_false,exercise,268,OpenTracing means older Google project.,,false,,,No: OpenTracing means older tracing standard.
+275,1,multiple_choice,exam,,Observability lets you answer new questions using:,Existing data|New code|More servers,0,,,"The system already emits what you need, so no new code is required."
+276,1,true_false,exam,,Observability needs new code for every new question.,,false,,,It answers new questions from data a system already emits.
+277,2,multiple_choice,exam,,Which signal maps a request's path?,Metrics|Profiles|Traces,2,,,A trace follows one request across services.
+278,3,multiple_choice,exam,,OpenTelemetry mainly fights vendor:,Lock-in|Pricing|Support,0,,,It gives one standard way to collect telemetry for any backend.
+279,4,true_false,exam,,Switching backends with OpenTelemetry needs no code changes.,,true,,,"Only configuration changes, not application code."
+280,5,multiple_choice,exam,,Libraries should depend on the OpenTelemetry:,SDK|Collector|API,2,,,The application wires in an SDK.
+281,5,true_false,exam,,A library should import the SDK.,,false,,,Libraries call only the API; the app chooses the SDK.
+282,6,multiple_choice,exam,,An instrumentation library wraps common:,Operating systems|Frameworks|Databases only,1,,,It generates spans automatically for frameworks like Express.
+283,7,multiple_choice,exam,,Auto-instrumentation usually needs no:,Libraries|Agents|Code edits,2,,,It observes existing code paths.
+284,8,multiple_choice,exam,,A trace records one request:,Whole journey|Per second|Per user,0,,,It follows the request across every service it touches.
+285,9,multiple_choice,exam,,Every span has a start time and a:,Version|Duration|Hostname,1,,,A span is a measurable unit of work.
+286,10,multiple_choice,exam,,`http.status_code` is a span:,Event|Kind|Attribute,2,,,Attributes describe the operation.
+287,11,multiple_choice,exam,,An incoming request span has kind:,Server|Client|Producer,0,,,The handling side of a call is the server span.
+288,12,multiple_choice,exam,,A call to another service creates a:,Resource|Child span|New trace,1,,,It nests under the span that triggered it.
+289,13,multiple_choice,exam,,Spans in one trace share a:,Span ID|Hostname|Trace ID,2,,,The trace ID links all the spans together.
+290,13,true_false,exam,,All spans in a trace share one span ID.,,false,,,Each span has its own span ID; only the trace ID is shared.
+291,14,multiple_choice,exam,,Trace context travels in an HTTP:,Body|Header|Cookie,1,,,The standard `traceparent` header carries it between services.
+292,15,multiple_choice,exam,,Baggage carries which kind of data?,Trace IDs|Log lines|Business context,2,,,"It holds application-specific values, not trace identifiers."
+293,16,multiple_choice,exam,,Context is injected on the:,Sending side|Receiving side|Backend,0,,,The sender puts it into the request headers.
+294,17,multiple_choice,exam,,A counter's value can only:,Reset hourly|Increase|Decrease,1,,,It tracks cumulative totals.
+295,17,true_false,exam,,A counter metric can go down.,,false,,,A counter only ever increases.
+296,18,multiple_choice,exam,,Cumulative temporality reports a:,Running total|Single event|Daily average,0,,,It sums everything since the start.
+297,19,multiple_choice,exam,,An OpenTelemetry log record can include a:,Counter|Trace ID|Span kind,1,,,That links the log to its transaction.
+298,20,multiple_choice,exam,,What links a log to its trace?,Same font|Same host|Shared ID,2,,,A shared trace ID groups related signals.
+299,24,multiple_choice,exam,,`service.name` is a resource:,Attribute|Exporter|Sampler,0,,,"It describes the service that produced the data, not one event."
+300,22,multiple_choice,exam,,Semantic conventions standardize attribute:,Prices|Names|Colours,1,,,That keeps each attribute meaning the same everywhere.
+301,23,multiple_choice,exam,,OTLP is the OpenTelemetry:,Query language|Dashboard|Wire protocol,2,,,It defines how telemetry is transmitted.
+302,24,multiple_choice,exam,,An exporter sends telemetry to a:,Destination|Developer|Library,0,,,It delivers the processed data.
+303,25,multiple_choice,exam,,The Collector sits between the app and the:,Database|Backend|Browser,1,,,It receives data from apps before sending it on.
+304,26,multiple_choice,exam,,A Collector pipeline begins with a:,Processor|Exporter|Receiver,2,,,The receiver accepts the raw data first.
+305,26,true_false,exam,,A pipeline ends with a Receiver.,,false,,,It starts with a receiver and ends with an exporter.
+306,27,multiple_choice,exam,,Which processor helps prevent out-of-memory crashes?,Sampler|Memory limiter|Batcher,1,,,It caps memory use inside the Collector.
+307,28,multiple_choice,exam,,Sampling mainly controls:,Accuracy only|Latency only|Cost and volume,2,,,It decides how much data is kept and sent.
+308,28,true_false,exam,,Sampling keeps every trace by default.,,false,,,Sampling keeps only some traces to save cost.
+309,29,multiple_choice,exam,,Head-based sampling decides:,Never|At the start|After the end,1,,,It uses information available when the request begins.
+310,29,true_false,exam,,Tail-based sampling decides once a trace finishes.,,true,,,That lets it keep slow or failed traces.
+311,30,multiple_choice,exam,,A Collector on every host is the:,Agent pattern|Gateway pattern|Sidecar pattern,0,,,A DaemonSet runs one local agent per node.
+312,31,multiple_choice,exam,,A resource detector fills in:,Sampling rates|Host metadata|Span names,1,,,It adds context about where the data came from.
+313,32,multiple_choice,exam,,An HTTP server span records the:,Password|Kernel version|Status code,2,,,It shows whether the request succeeded.
+314,33,multiple_choice,exam,,`db.system` records the database:,Type|Password|Size,0,,,For example MySQL or Postgres.
+315,33,true_false,exam,,Database spans should include raw query values.,,false,,,"Raw values may be sensitive, so spans should avoid them."
+316,34,multiple_choice,exam,,Queue context must be injected:,Automatically|Never|Manually,2,,,"A queue creates a gap, so you carry the context yourself."
+317,35,multiple_choice,exam,,Continuous profiling shows where code spends:,CPU time|Network fees|Disk space,0,,,It samples real function calls over time.
+318,36,multiple_choice,exam,,Changing backends usually changes the:,Trace IDs|Exporter config|Span names,1,,,The data stays the same; only its destination moves.
+319,37,multiple_choice,exam,,A raw user ID on every metric risks:,Missing spans|Slow logs|Cardinality blowup,2,,,"Each user creates a new series, which is costly and slow."
+320,37,true_false,exam,,Many unique label values inflate storage cost.,,true,,,Too many unique label values create too many series.
+321,38,multiple_choice,exam,,The Operator manages Collectors as Kubernetes:,Namespaces|Custom resources|Containers only,1,,,It uses the native custom resource mechanism.
