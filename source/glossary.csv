@@ -69,7 +69,7 @@ UUIDs,Universally unique identifiers: 128-bit random-looking IDs that are practi
 Dockerfile,A text file listing the instructions Docker follows to build an image.,https://docs.docker.com/reference/dockerfile/,265
 SSH,Secure Shell: an encrypted protocol for logging in to and running commands on another machine.,https://en.wikipedia.org/wiki/Secure_Shell,265
 Traces,"Records of the path one request takes through a system, made of connected spans.",https://opentelemetry.io/docs/concepts/signals/traces/,9
-Spans,"Single timed operations within a trace, such as one function call or database query.",https://opentelemetry.io/docs/concepts/signals/traces/,36
+Spans,"Single timed operations within a trace, such as one function call or database query.",https://opentelemetry.io/docs/concepts/signals/traces/#spans,36
 Metrics,"Numbers measured over time, such as request counts or memory use.",https://opentelemetry.io/docs/concepts/signals/metrics/,8
 Logs,Timestamped text records of events that happened in a program.,https://opentelemetry.io/docs/concepts/signals/logs/,8
 Counters,"Metrics that only ever go up, such as the total number of requests served.",https://opentelemetry.io/docs/specs/otel/metrics/api/,113
@@ -80,4 +80,4 @@ Exporters,Components that send collected telemetry to a backend.,https://opentel
 Collectors,"The OpenTelemetry Collector programs that receive, process and forward telemetry.",https://opentelemetry.io/docs/collector/,22
 Processors,"Collector components that change or filter telemetry, such as batching or limiting memory.",https://opentelemetry.io/docs/collector/configuration/,176
 Gateway patterns,A collector setup where a central service receives telemetry from many agents.,https://opentelemetry.io/docs/collector/deployment/gateway/,204
-Resource detectors,Components that automatically fill in resource attributes such as cloud region or host name.,https://opentelemetry.io/docs/languages/js/resources/,211
+Resource detectors,Components that automatically fill in resource attributes such as cloud region or host name.,https://opentelemetry.io/docs/concepts/resources/,211

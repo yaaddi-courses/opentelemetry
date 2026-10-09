@@ -4,7 +4,7 @@
   "description": "The vendor-neutral standard for traces, metrics, and logs — from a single span to a full Collector pipeline in production. The final deck (running OTel on Kubernetes) goes smoothly if you already know pods and Deployments — see this app's Kubernetes Fundamentals course first if those are new.",
   "image": "cover.png",
   "file": "opentelemetry.zip",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "tags": [
     "observability",
     "opentelemetry",
@@ -17,6 +17,11 @@
       "version": "1.0.0",
       "date": "2026-09-30",
       "notes": "Initial release â€” 38 decks, 266 cards, each pack with a preview card teaching the concept before its graded main card and practice cards."
+    },
+    {
+      "version": "1.0.1",
+      "date": "2026-10-09",
+      "notes": "Glossary: every term now points at one link, so the same word never sends you to two different pages."
     }
   ],
   "toc": [
