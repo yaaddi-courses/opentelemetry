@@ -1,0 +1,40 @@
+section,deck,pack,level,keywords,terms,kind,main_card_id
+Foundations,What Observability Actually Means,What does 'observability' mean?,1,Observability,Observability,teach,1
+Foundations,"The Signals: Traces, Metrics, Logs, and Profiles",Which signal shows a request's path?,1,Trace|Metric|Log,Trace|Metric|Log,teach,8
+Foundations,Why OpenTelemetry Exists,What problem did OTel solve?,1,Vendor lock-in|OpenTracing|OpenCensus|CNCF,Vendor lock-in|OpenTracing|OpenCensus|CNCF,teach,15
+Foundations,Vendor-Neutral vs. Proprietary Agents,Switching backends with OTel needs:,1,Collector,Collector,teach,22
+SDK & Instrumentation,The API vs. SDK Separation,Libraries should depend on the OTel:,1,No-op,No-op,teach,29
+SDK & Instrumentation,Instrumentation Libraries vs. Manual Instrumentation,Auto-instrumenting Express requests is a:,1,Span|Manual instrumentation,Span|Manual instrumentation,teach,36
+SDK & Instrumentation,"Auto-Instrumentation, Briefly",Auto-instrumentation usually needs:,1,Auto-instrumentation,Auto-instrumentation,teach,43
+Traces,What a Trace Actually Is,A trace represents:,1,A trace represents:,,teach,50
+Traces,What a Span Represents,A span always has a:,1,A span always has a:,,teach,57
+Traces,Span Attributes and Events,http.status_code is a span:,1,Span attribute|Trace ID,Span attribute|Trace ID,teach,64
+Traces,Span Kind,Handling an incoming request is span kind:,2,Span kind,Span kind,teach,71
+Traces,Parent-Child Span Relationships,Calling another service creates a:,2,Root span,Root span,teach,78
+Traces,Trace ID and Span ID,All spans in a trace share the:,2,Span ID,Span ID,teach,85
+Context Propagation,W3C Trace Context Propagation,W3C Trace Context propagates via an:,2,W3C Trace Context|traceparent,W3C Trace Context|traceparent,teach,92
+Context Propagation,Baggage: Carrying Business Context,Baggage carries:,2,Baggage,Baggage,teach,99
+Context Propagation,Context Propagation Across Service Boundaries,Injecting context happens on the:,2,Injecting context happens on the:,,teach,106
+Metrics & Logs,"Metrics: Counters, Gauges, and Histograms",A metric that only increases is a:,2,Counter|Gauge|Histogram,Counter|Gauge|Histogram,teach,113
+Metrics & Logs,Metric Aggregation Temporality,Cumulative temporality reports:,2,Cumulative temporality|Delta temporality,Cumulative temporality|Delta temporality,teach,120
+Metrics & Logs,Structured Logs in OpenTelemetry,An OTel log record can include a:,2,An OTel log record can include a:,,teach,127
+Metrics & Logs,"Correlating Logs, Traces, and Metrics",What links a log to its trace?,2,What links a log to its trace?,,teach,134
+Metrics & Logs,Resource Attributes,service.name is a:,3,Resource attribute|service.name,Resource attribute|service.name,teach,141
+Metrics & Logs,Semantic Conventions,http.method comes from OTel's:,3,Semantic conventions,Semantic conventions,teach,148
+The Collector,The OpenTelemetry Protocol (OTLP),OTLP is OpenTelemetry's:,3,OTLP is OpenTelemetry's:,,teach,155
+The Collector,Exporters: Where Telemetry Goes,An exporter's job is to:,3,Exporter,Exporter,teach,162
+The Collector,"The OpenTelemetry Collector, Briefly",The Collector sits between the app and the:,3,The Collector sits between the app and the:,,teach,169
+The Collector,"Collector Pipelines: Receivers, Processors, Exporters",Order the Collector pipeline stages.,3,Receiver|Processor,Receiver|Processor,teach,176
+The Collector,Common Collector Processors,Which processor prevents OOM crashes?,3,Which processor prevents OOM crashes?,,teach,183
+Sampling & Scale,Sampling: Why You Can't Keep Everything,Sampling mainly controls:,3,Sampling,Sampling,teach,190
+Sampling & Scale,Head-Based vs. Tail-Based Sampling,Deciding before the trace finishes is:,3,Head-based sampling|Tail-based sampling,Head-based sampling|Tail-based sampling,teach,197
+The Collector,Deploying the Collector: Agent vs. Gateway Pattern,A Collector as a K8s DaemonSet is the:,3,Agent pattern|Gateway pattern,Agent pattern|Gateway pattern,teach,204
+SDK & Instrumentation,"SDK Configuration: Samplers, Exporters, Resource Detectors",A resource detector auto-fills:,4,Resource detector,Resource detector,teach,211
+SDK & Instrumentation,Instrumenting an HTTP Service,An HTTP server span typically records:,4,An HTTP server span typically records:,,teach,218
+SDK & Instrumentation,Instrumenting Database Calls,db.system as an attribute records the:,4,db.system as an attribute records the:,,teach,225
+Context Propagation,Propagating Context Across Async/Queue Boundaries,Queue context propagation must be handled:,4,Context propagation,Context propagation,teach,232
+Sampling & Scale,Continuous Profiling as a Fourth Signal,Continuous profiling shows where:,4,Continuous profiling,Continuous profiling,teach,239
+Putting It Together,Choosing a Backend,Switching from Jaeger to a new backend changes:,4,Switching from Jaeger to a new backend changes:,,teach,246
+Putting It Together,Common Pitfalls,A raw user ID on every metric risks:,4,Cardinality,Cardinality,teach,253
+Putting It Together,OpenTelemetry on Kubernetes,The OTel Operator manages Collectors as K8s:,4,The OTel Operator manages Collectors as K8s:,,teach,260
+Review,Recap: Key Terms,Recap pack 39,4,OpenTracing|OpenCensus|CNCF|No-op|Root span|W3C Trace Context|Baggage|Gauge|Histogram|Cumulative temporality|Delta temporality|Span attribute|service.name|Semantic conventions|Head-based sampling|Tail-based sampling|Agent pattern|Gateway pattern|Resource detector|Context propagation|Continuous profiling|Cardinality,,review,268
